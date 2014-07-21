@@ -28,6 +28,8 @@ var innerhtml = require("innerhtml")
 innerhtml.createReadStream(input).pipe(innerhtml.createWriteStream(output))
 ```
 
+Finally, use [browserify](http://browserify.org/) to create `bundle.js`:
+
 ```sh
 npm install -g browserify
 npm install innerhtml
