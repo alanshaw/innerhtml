@@ -6,7 +6,7 @@ Stream content to/from a DOM node
 
 Copy content from one DOM node to another:
 
-`index.html`
+### index.html
 
 ```html
 <!doctype html>
@@ -18,7 +18,7 @@ Copy content from one DOM node to another:
 <script src="bundle.js"></script>
 ```
 
-`main.js`
+### main.js
 
 ```js
 var innerhtml = require("innerhtml")
