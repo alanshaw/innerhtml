@@ -1,0 +1,27 @@
+{
+  "name": "innerhtml",
+  "version": "0.0.0",
+  "description": "Stream content to/from a DOM node",
+  "main": "innerhtml.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/alanshaw/innerhtml.git"
+  },
+  "keywords": [
+    "stream",
+    "dom",
+    "innerhtml",
+    "innertext",
+    "node",
+    "text"
+  ],
+  "author": "Alan Shaw",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/alanshaw/innerhtml/issues"
+  },
+  "homepage": "https://github.com/alanshaw/innerhtml"
+}
