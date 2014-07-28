@@ -35,3 +35,31 @@ npm install -g browserify
 npm install innerhtml
 browserify main.js > bundle.js
 ```
+
+## API
+
+### innerhtml.createReadStream(element [, options])
+
+Create a new readable stream whose source is the passed DOM element. If no options are passed, the readable stream will emit `element`'s `innerHTML`.
+
+#### options.objectMode
+
+Setting this to true will cause the readable stream to emit a cloned node for each of `element`'s `childNodes`.
+
+#### options.remove
+
+Setting this to true will cause the readable stream to empty the contents of `element` by setting it's `innerHTML` to "" after it has been emitted.
+
+If `objectMode` is also set to true, the readable stream will remove and emit each of `element`'s `childNodes`.
+
+### innerhtml.createWriteStream(element [, options])
+
+Create a new writeable stream whose destination is the passed DOM element. If no options are passed, the writeable stream will replace the `element`'s `innerHTML` with the content piped to it. 
+
+#### options.objectMode
+
+Setting this to true will cause the writable stream to expect DOM nodes written to it.
+
+#### options.append
+
+Setting this to true will cause the writable stream to append the existing content to the node instead of replacing it.
