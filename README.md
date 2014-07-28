@@ -54,7 +54,7 @@ If `objectMode` is also set to true, the readable stream will remove and emit ea
 
 ### innerhtml.createWriteStream(element [, options])
 
-Create a new writable stream whose destination is the passed DOM element. If no options are passed, the writeable stream will replace the `element`'s `innerHTML` with the content piped to it. 
+Create a new writable stream whose destination is the passed DOM element. If no options are passed, the writable stream will replace the `element`'s `innerHTML` with the content piped to it. 
 
 #### options.objectMode
 
