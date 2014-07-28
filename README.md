@@ -58,8 +58,8 @@ Create a new writeable stream whose destination is the passed DOM element. If no
 
 #### options.objectMode
 
-Setting this to true will cause the writable stream to expect DOM nodes written to it.
+Setting this to true will cause the writable stream to expect DOM nodes to be written to it.
 
 #### options.append
 
-Setting this to true will cause the writable stream to append the existing content to the node instead of replacing it.
+Setting this to true will cause the writable stream to append to the existing content of the node instead of replacing it.
