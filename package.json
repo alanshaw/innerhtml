@@ -4,7 +4,7 @@
   "description": "Stream content to/from a DOM node",
   "main": "innerhtml.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "tape test.js"
   },
   "repository": {
     "type": "git",
@@ -23,5 +23,9 @@
   "bugs": {
     "url": "https://github.com/alanshaw/innerhtml/issues"
   },
-  "homepage": "https://github.com/alanshaw/innerhtml"
+  "homepage": "https://github.com/alanshaw/innerhtml",
+  "devDependencies": {
+    "domino": "^1.0.17",
+    "tape": "^2.13.4"
+  }
 }
