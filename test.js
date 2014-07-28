@@ -5,6 +5,41 @@ var test = require("tape")
 // Expose to innerhtml module
 var doc = global.document = domino.createWindow().document
 
+test("copy", function (t) {
+  var input = doc.createElement("div")
+  var h1 = doc.createElement("h1")
+
+  input.appendChild(h1)
+
+  var output = doc.createElement("div")
+
+  doc.body.appendChild(input)
+  doc.body.appendChild(output)
+
+  var rs = innerhtml.createReadStream(input)
+  var ws = innerhtml.createWriteStream(output)
+
+  t.equal(output.childNodes.length, 0, "Output div should have zero children")
+
+  ws.on("finish", function () {
+    var nodes = output.childNodes
+    t.equal(nodes.length, 1, "Output div should have just one child")
+    t.equal(nodes[0].tagName, "H1", "A h1 element should have been added to the output div")
+
+    nodes = input.childNodes
+    t.equal(nodes.length, 1, "Input div should still have just one child")
+    t.equal(nodes[0], h1, "h1 element should still be in the input div")
+
+    // Clean up
+    doc.body.removeChild(input)
+    doc.body.removeChild(output)
+
+    t.end()
+  })
+
+  rs.pipe(ws)
+})
+
 test("replace", function (t) {
   var input = doc.createElement("div")
   var h1 = doc.createElement("h1")
@@ -74,3 +109,73 @@ test("non-destructive append", function (t) {
   rs.pipe(ws)
 })
 
+test("copy objectMode", function (t) {
+  var input = doc.createElement("div")
+  var h1 = doc.createElement("h1")
+
+  input.appendChild(h1)
+
+  var output = doc.createElement("div")
+
+  doc.body.appendChild(input)
+  doc.body.appendChild(output)
+
+  var rs = innerhtml.createReadStream(input, {objectMode: true})
+  var ws = innerhtml.createWriteStream(output, {objectMode: true})
+
+  t.equal(output.childNodes.length, 0, "Output div should have zero children")
+
+  ws.on("finish", function () {
+    var nodes = output.childNodes
+    t.equal(nodes.length, 1, "Output div should have just one child")
+    t.equal(nodes[0].tagName, "H1", "A h1 element should have been added to the output div")
+    t.notEqual(nodes[0], h1, "h1 element in output div should not be same as h1 element in input div")
+
+    nodes = input.childNodes
+    t.equal(nodes.length, 1, "Input div should still have just one child")
+    t.equal(nodes[0], h1, "h1 element should still be in the input div")
+
+    // Clean up
+    doc.body.removeChild(input)
+    doc.body.removeChild(output)
+
+    t.end()
+  })
+
+  rs.pipe(ws)
+})
+
+test("move objectMode", function (t) {
+  var input = doc.createElement("div")
+  var h1 = doc.createElement("h1")
+
+  input.appendChild(h1)
+
+  var output = doc.createElement("div")
+
+  doc.body.appendChild(input)
+  doc.body.appendChild(output)
+
+  var rs = innerhtml.createReadStream(input, {objectMode: true, remove: true})
+  var ws = innerhtml.createWriteStream(output, {objectMode: true})
+
+  t.equal(output.childNodes.length, 0, "Output div should have zero children")
+
+  ws.on("finish", function () {
+    var nodes = output.childNodes
+    t.equal(nodes.length, 1, "Output div should have just one child")
+    t.equal(nodes[0].tagName, "H1", "A h1 element should have been added to the output div")
+    t.equal(nodes[0], h1, "h1 element in output div should be same as h1 element from the input div")
+
+    nodes = input.childNodes
+    t.equal(nodes.length, 0, "Input div should be empty")
+
+    // Clean up
+    doc.body.removeChild(input)
+    doc.body.removeChild(output)
+
+    t.end()
+  })
+
+  rs.pipe(ws)
+})
