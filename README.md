@@ -12,7 +12,7 @@ Copy content from one DOM node to another:
 <!doctype html>
 <div id="input">
   <h1>Lorem Ipsum</p>
-  <p>Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas.</p>
+  <p>Pellentesque habitant morbi tristique senectus.</p>
 </div>
 <div id="output"></div>
 <script src="bundle.js"></script>
