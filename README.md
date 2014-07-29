@@ -62,4 +62,8 @@ Setting this to true will cause the writable stream to expect DOM nodes to be wr
 
 #### options.append
 
-Setting this to true will cause the writable stream to append to the existing content of the node instead of replacing it.
+Setting this to true will cause the writable stream to append to the existing contents of the node instead of replacing it.
+
+#### options.clone
+
+When `objectMode` is set to true, setting this option to true causes the writeable stream to clone the node written to it before it is appended to `element`. It allows a readable stream to pipe to multiple destinations when in `objectMode`.
