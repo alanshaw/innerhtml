@@ -1,4 +1,4 @@
-# innerhtml [![Build Status](https://img.shields.io/travis/alanshaw/innerhtml/master.svg)](https://travis-ci.org/alanshaw/innerhtml) [![devDependency Status](https://david-dm.org/alanshaw/innerhtml/dev-status.svg)](https://david-dm.org/alanshaw/innerhtml#info=devDependencies)
+# innerhtml [![Build Status](https://img.shields.io/travis/alanshaw/innerhtml/master.svg?style=flat)](https://travis-ci.org/alanshaw/innerhtml) [![devDependency Status](https://david-dm.org/alanshaw/innerhtml/dev-status.svg?style=flat)](https://david-dm.org/alanshaw/innerhtml#info=devDependencies)
 
 Stream content to/from a DOM node
 
