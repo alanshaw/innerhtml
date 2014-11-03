@@ -26,7 +26,7 @@
   "homepage": "https://github.com/alanshaw/innerhtml",
   "devDependencies": {
     "domino": "^1.0.17",
-    "tape": "^2.13.4"
+    "tape": "^3.0.1"
   },
   "dependencies": {
     "inherits": "^2.0.1"
